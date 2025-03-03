@@ -1,26 +1,26 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useReactMediaRecorder } from './voice';
 
-function App() {
+const App: React.FC = () => {
+    const {
+      hypotheses,
+      startRecording,
+      stopRecording,
+    } = useReactMediaRecorder({ separate: false });
+
+    console.log("Voice to text: ", hypotheses);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Voice Example
+
+      <button onClick={startRecording}>Start Recording</button>
+      <button onClick={stopRecording}>Stop Recording</button>
     </div>
   );
-}
+};
 
 export default App;
+
